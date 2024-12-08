@@ -1,4 +1,7 @@
 class OnboardingsController < ApplicationController
+
+  skip_before_action :verify_authenticity_token, only: [:update, :users_and_organizations]
+
   before_action :authenticate_user!
   before_action :check_suspended, only: %i[notifications]
   before_action :set_cache_control_headers, only: %i[show tags]

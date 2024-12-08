@@ -1,6 +1,8 @@
 class ArticlesController < ApplicationController
   include ApplicationHelper
 
+  skip_before_action :verify_authenticity_token, only: [:create]
+
   # NOTE: It seems quite odd to not authenticate the user for the :new action.
   before_action :authenticate_user!, except: %i[feed new]
   before_action :set_article, only: %i[edit manage update destroy stats admin_unpublish admin_featured_toggle]

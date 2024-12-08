@@ -53,11 +53,11 @@ class DataUpdateScript < ApplicationRecord
   end
 
   def mark_as_failed!(err)
-    update!(
-      finished_at: Time.current,
-      status: :failed,
-      error: "#{err.class}: #{err.message}",
-    )
+#    update!(
+ #     finished_at: Time.current,
+  #    status: :failed,
+   #   error: "#{err.class}: #{err.message}",
+   # )
   end
 
   def file_path

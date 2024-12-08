@@ -20,6 +20,7 @@ gem "algoliasearch-rails", "~> 2.3" # Algolia Search API Client
 gem "ancestry", "~> 4.2" # Ancestry allows the records of a ActiveRecord model to be organized in a tree structure
 gem "blazer", "~> 2.6" # Allows admins to query data
 gem "bootsnap", ">= 1.1.0", require: false # Boot large ruby/rails apps faster
+gem "bullet", "~> 7.0" # help to kill N+1 queries and unused eager loading
 gem "carrierwave", "~> 2.2" # Upload files in your Ruby applications, map them to a range of ORMs, store them on different backends
 gem "carrierwave-bombshelter", "~> 0.2" # Protect your carrierwave from image bombs
 gem "cgi", "~> 0.3.6" # Support for the Common Gateway Interface protocol.
@@ -27,12 +28,15 @@ gem "cld3", "~> 3.5" # Ruby interface for Compact Language Detector v3
 gem "cloudinary", "~> 1.23" # Client library for easily using the Cloudinary service
 gem "counter_culture", "~> 3.2" # counter_culture provides turbo-charged counter caches that are kept up-to-date
 gem "countries", "~> 5.5" # All sorts of useful information about every country packaged as pretty little country objects. It includes data from ISO 3166
-gem "ddtrace", "~> 1.16.2" # ddtrace is Datadog’s tracing client for Ruby.
+#gem "ddtrace", "~> 1.16.2" # ddtrace is Datadog’s tracing client for Ruby.
 gem "devise", "~> 4.8" # Flexible authentication solution for Rails
 gem "devise_invitable", "~> 2.0.6" # Allows invitations to be sent for joining
-gem "dogstatsd-ruby", "~> 5.6" # A client for DogStatsD, an extension of the StatsD metric server for Datadog
+gem "dotenv-rails", "~> 2.8.1" # For loading ENV variables locally
+#gem 'dotenv-rails', groups: [:development, :test, :production]
+#gem "dogstatsd-ruby", "~> 5.6" # A client for DogStatsD, an extension of the StatsD metric server for Datadog
 gem "email_validator", "~> 2.2" # Email validator for Rails and ActiveModel
 gem "emoji_regex", "~> 3.2" # A pair of Ruby regular expressions for matching Unicode Emoji symbols
+gem "faker", "~> 2.22" # A library for generating fake data such as names, addresses, and phone numbers
 gem "fastimage", "~> 2.2" # FastImage finds the size or type of an image given its uri by fetching as little as needed.
 gem "fastly", "~> 3.0" # Client library for the Fastly acceleration system
 gem "feedjira", "~> 3.2" # A feed fetching and parsing library
@@ -42,6 +46,7 @@ gem "flipper-active_record", "~> 0.25.0" # Store Flipper flags in ActiveRecord
 gem "flipper-active_support_cache_store", "~> 0.25.0" # Cache feature flags for a short time
 gem "flipper-ui", "~> 0.25.0" # UI for the Flipper gem
 gem "fog-aws", "~> 3.14" # 'fog' gem to support Amazon Web Services
+gem 'forem', '~> 0.0.1'
 gem "front_matter_parser", "~> 1.0" # Parse a front matter from syntactically correct strings or files
 gem "gemoji", "~> 4.1.0" # Character information and metadata for standard and custom emoji
 gem "gibbon", "~> 3.4" # API wrapper for MailChimp's API
@@ -61,6 +66,7 @@ gem "jsonapi-serializer", "~> 2.2" # Serializer for Ruby objects
 gem "kaminari", "~> 1.2" # A Scope & Engine based, clean, powerful, customizable and sophisticated paginator
 gem "katex", "~> 0.9.0" # This rubygem enables you to render TeX math to HTML using KaTeX. It uses ExecJS under the hood
 gem "liquid", "~> 5.4" # A secure, non-evaling end user template engine with aesthetic markup
+gem "listen", "~> 3.7", require: false # Helps 'listen' to file system modifications events (also used by other gems like guard)
 gem "metainspector", "~> 5.12" # To get and parse website metadata for Open Graph rich objects
 gem "nokogiri", "~> 1.13" # HTML, XML, SAX, and Reader parser
 gem "octokit", "~> 5.2" # Simple wrapper for the GitHub API
@@ -106,6 +112,7 @@ gem "slack-notifier", "~> 2.4" # A slim ruby wrapper for posting to slack webhoo
 gem "sprockets-rails", "~> 3.4" # Sprockets Rails integration
 gem "sterile", "~> 1.0" # Transliterate Unicode and Latin1 text to 7-bit ASCII for URLs
 gem "stripe", "~> 5.55" # Ruby library for the Stripe API
+gem "strscan", "~> 3.1.0" # Provides String Scanner functionality
 gem "strong_migrations", "~> 1.2" # Catch unsafe migrations
 gem "terser", "~> 1.1" # Terser is a Ruby wrapper for the terser JavaScript parser and minifier
 gem "twitter", "~> 7.0" # A Ruby interface to the Twitter API
@@ -125,7 +132,7 @@ group :development do
   gem "guard", "~> 2.18", require: false # Guard is a command line tool to easily handle events on file system modifications
   gem "guard-rspec", "~> 4.7", require: false # Guard::Rspec includes a DSL for running tests on change
   gem "i18n-tasks", "~> 1.0.11" # Helpers to find and manage missing and unused translations
-  gem "listen", "~> 3.7", require: false # Helps 'listen' to file system modifications events (also used by other gems like guard)
+#  gem "listen", "~> 3.7", require: false # Helps 'listen' to file system modifications events (also used by other gems like guard)
   gem "memory_profiler", "~> 1.0", require: false # Memory profiling routines for Ruby 2.3+
   gem "solargraph", "~> 0.45", require: false # For LSP support (such as symbol renaming, documentation lookup)
   gem "solargraph-rails", "~> 0.3.1", require: false # For LSP support with Rails
@@ -137,12 +144,12 @@ end
 
 group :development, :test do
   gem "amazing_print", "~> 1.4" # Great Ruby debugging companion: pretty print Ruby objects to visualize their structure
-  gem "bullet", "~> 7.0" # help to kill N+1 queries and unused eager loading
+#  gem "bullet", "~> 7.0" # help to kill N+1 queries and unused eager loading
   gem "capybara", "~> 3.37.1" # Capybara is an integration testing tool for rack based web applications
   gem "cypress-rails", "~> 0.5" # For end to end tests (E2E)
   gem "debug", ">= 1.0.0" # Provide a debug with step capabilities
-  gem "dotenv-rails", "~> 2.8.1" # For loading ENV variables locally
-  gem "faker", "~> 2.22" # A library for generating fake data such as names, addresses, and phone numbers
+#  gem "dotenv-rails", "~> 2.8.1" # For loading ENV variables locally
+#  gem "faker", "~> 2.22" # A library for generating fake data such as names, addresses, and phone numbers
   gem "knapsack_pro", "~> 5.1" # Help parallelize Ruby spec builds
   gem "pry", "~> 0.14" # An IRB alternative and runtime developer console
   gem "pry-rails", "~> 0.3" # Use Pry as your rails console
@@ -176,3 +183,4 @@ group :test do
   gem "with_model", "~> 2.1.7" # Dynamically build a model within an RSpec context
   gem "zonebie", "~> 0.6.1" # Runs your tests in a random timezone
 end
+

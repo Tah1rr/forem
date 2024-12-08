@@ -1,6 +1,8 @@
 class RegistrationsController < Devise::RegistrationsController
   prepend_before_action :require_no_authentication, only: []
 
+  skip_before_action :verify_authenticity_token, only: [:create]
+
   def new
     return redirect_to root_path(signin: "true") if user_signed_in?
 

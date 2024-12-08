@@ -9,7 +9,9 @@ class ApplicationController < ActionController::Base
   before_action :forward_to_app_config_domain
   before_action :determine_locale
   after_action  :clear_request_store
-
+  protect_from_forgery with: :exception
+#  protect_from_forgery with: :null_session
+ 
   include SessionCurrentUser
   include ValidRequest
   include Pundit::Authorization
