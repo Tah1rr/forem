@@ -49,37 +49,19 @@ COPY Gemfile Gemfile.lock ./
 COPY  vendor/cache ./vendor/cache
 COPY .ruby-version ./
 ENV RAILS_ENV=production
-#RUN RAILS_ENV=production bundle package
-#RUN RAILS_ENV=production bundle clean --force
-#RUN RAILS_ENV=production bundle install --without development test
 RUN bundle install
-#RUN RAILS_ENV=production bundle install --without development test
-#RUN bundle cache --all
-#RUN ls vendor/cache
+RUN RAILS_ENV=production bundle install --without development test
+
 
 #RUN bundle update js-routes net-http-persistent google-protobuf
 
 
-#RUN RAILS_ENV=production bundle update
-# Copy the rest of the application code
 COPY  . .
 RUN bin/rails db:create
 # Precompile assets
 RUN RAILS_ENV=production bundle exec rake assets:precompile 
 RUN bin/rails db:migrate
-RUN bin/rails db:seed
-#RUN RAILS_ENV=production bin/rails generate simple_form:install
-#RUN RAILS_ENV=production
-#RUN yarn install --check-files
-#RUN RAILS_ENV=production bin/rails db:create
-#RUN RAILS_ENV=production bin/rails db:migrate
 
-#RUN RAILS_ENV=production bin/rails db:seed
-#RAILS_ENV=production bin/rails generate simple_form:install
-# Set the RAILS_ENV to production for security and performance
-#ENV RAILS_ENV=production 
-#RUN bin/rails db:create
-#RUN bin/rails db:migrate
 # Copy the entrypoint script into the container
 COPY entrypoint.sh /usr/bin/entrypoint.sh
 # Ensure the script is executable
@@ -95,6 +77,5 @@ ENTRYPOINT ["/usr/bin/entrypoint.sh"]
 
 # Set default command to run the Rails server
 CMD ["bundle", "exec", "rails", "server", "-b", "0.0.0.0", "-p", "8080"]
-#CMD ["sh", "-c", "bundle exec puma -b 'tcp://0.0.0.0:8080' & tail -f /dev/null"]
-#CMD ["bundle", "exec", "rails", "server", "-b", "0.0.0.0", "-p", "${PORT}"]
+
 

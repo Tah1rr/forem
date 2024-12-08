@@ -135,7 +135,7 @@ GEM
     bootsnap (1.18.4)
       msgpack (~> 1.2)
     brakeman (5.4.1)
-    browser (6.1.0)
+    browser (5.3.1)
     brpoplpush-redis_script (0.1.3)
       concurrent-ruby (~> 1.0, >= 1.0.5)
       redis (>= 1.0, < 6)
@@ -169,8 +169,8 @@ GEM
       carrierwave
       fastimage
     cgi (0.3.6)
-    chartkick (5.1.2)
-    cld3 (3.7.0)
+    chartkick (5.0.7)
+    cld3 (3.6.0)
     cloudinary (1.29.0)
       aws_cf_signer
       rest-client (>= 2.0.0)
@@ -235,6 +235,8 @@ GEM
       devise (>= 4.6)
     diff-lcs (1.5.1)
     docile (1.4.1)
+    dockerfile-rails (1.6.24)
+      rails (>= 3.0.0)
     domain_name (0.6.20240107)
     dotenv (2.8.1)
     dotenv-rails (2.8.1)
@@ -304,24 +306,15 @@ GEM
       concurrent-ruby (~> 1.1)
       webrick (~> 1.7)
       websocket-driver (~> 0.7)
-    ffi (1.17.0-aarch64-linux-gnu)
-    ffi (1.17.0-aarch64-linux-musl)
-    ffi (1.17.0-arm-linux-gnu)
-    ffi (1.17.0-arm-linux-musl)
-    ffi (1.17.0-arm64-darwin)
-    ffi (1.17.0-x86-linux-gnu)
-    ffi (1.17.0-x86-linux-musl)
-    ffi (1.17.0-x86_64-darwin)
-    ffi (1.17.0-x86_64-linux-gnu)
-    ffi (1.17.0-x86_64-linux-musl)
+    ffi (1.17.0)
     ffi-compiler (1.3.2)
       ffi (>= 1.15.5)
       rake
-    field_test (0.7.0)
-      activerecord (>= 7)
+    field_test (0.6.1)
+      activerecord (>= 6.1)
       browser (>= 2)
-      railties (>= 7)
-      rice (>= 4.3.3)
+      railties (>= 6.1)
+      rice (>= 4.0.2)
     flipper (0.25.4)
     flipper-active_record (0.25.4)
       activerecord (>= 4.2, < 8)
@@ -534,7 +527,7 @@ GEM
     matrix (0.4.2)
     memoizable (0.4.2)
       thread_safe (~> 0.3, >= 0.3.1)
-    memory_profiler (1.1.0)
+    memory_profiler (1.0.2)
     metainspector (5.15.0)
       addressable (~> 2.8.4)
       faraday (~> 2.5)
@@ -564,8 +557,7 @@ GEM
       redis (>= 3.0)
     msgpack (1.7.5)
     multi_json (1.15.0)
-    multi_xml (0.7.1)
-      bigdecimal (~> 3.1)
+    multi_xml (0.6.0)
     multipart-post (2.4.1)
     mutex_m (0.3.0)
     nakayoshi_fork (0.0.4)
@@ -578,7 +570,7 @@ GEM
       connection_pool (~> 2.2)
     net-http2 (0.18.5)
       http-2 (~> 0.11)
-    net-imap (0.5.1)
+    net-imap (0.4.18)
       date
       net-protocol
     net-pop (0.1.2)
@@ -665,8 +657,8 @@ GEM
     pg_search (2.3.7)
       activerecord (>= 6.1)
       activesupport (>= 6.1)
-    pghero (3.6.1)
-      activerecord (>= 6.1)
+    pghero (3.5.0)
+      activerecord (>= 6)
     pry (0.15.0)
       coderay (~> 1.1)
       method_source (~> 1.0)
@@ -1029,23 +1021,23 @@ GEM
       yard (>= 0.8.3)
     yard-activesupport-concern (0.0.1)
       yard (>= 0.8)
-    zeitwerk (2.7.1)
+    zeitwerk (2.6.18)
     zlib (2.1.1)
     zonebie (0.6.1)
 
 PLATFORMS
   aarch64-linux
-  aarch64-linux-gnu
+  aarch64-linux
   aarch64-linux-musl
   arm-linux
-  arm-linux-gnu
+  arm-linux
   arm-linux-musl
   arm64-darwin
   x86-linux
-  x86-linux-gnu
+  x86-linux
   x86-linux-musl
   x86_64-darwin
-  x86_64-linux-gnu
+  x86_64-linux
   x86_64-linux-musl
 
 DEPENDENCIES
@@ -1078,6 +1070,7 @@ DEPENDENCIES
   derailed_benchmarks (~> 2.1)
   devise (~> 4.8)
   devise_invitable (~> 2.0.6)
+  dockerfile-rails
   dotenv-rails (~> 2.8.1)
   easy_translate (~> 0.5.1)
   email_validator (~> 2.2)
@@ -1211,4 +1204,4 @@ RUBY VERSION
    ruby 3.3.0p0
 
 BUNDLED WITH
-   2.5.3
+   2.5.23

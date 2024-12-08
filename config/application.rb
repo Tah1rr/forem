@@ -27,6 +27,7 @@ module PracticalDeveloper
     # See: https://guides.rubyonrails.org/configuring.html#results-of-config-load-defaults
     config.load_defaults 6.1
 
+   
     ### FRAMEWORK DEFAULT OVERRIDES
     # Override new framework defaults to keep existing behavior.
     #

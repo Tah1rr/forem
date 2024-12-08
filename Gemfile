@@ -184,3 +184,5 @@ group :test do
   gem "zonebie", "~> 0.6.1" # Runs your tests in a random timezone
 end
 
+
+gem "dockerfile-rails", ">= 1.6", :group => :development
